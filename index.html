@@ -1,25 +1,67 @@
 <!DOCTYPE html>
-    <head>
-        <meta charset="utf-8">
 
-        <title>Pomodoro Timer</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="./style.css">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<head>
+    <meta charset="utf-8">
 
-    </head>
-    <body>
-        <div class="container">
-            <div class="align-middle">
-                <center>
-                    <h2>Pomodoro Timer</h2>
-                    <h1>25:00</h1>
-                </center>   
+    <title>Pomodoro Timer</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+
+<body>
+    <center>
+        <div class="align-center">
+            <h2>Pomodoro Timer</h2>
+            <h1 id="time">25:00</h1>
+            <div class="row">
+                <div class="col-md">
+                    <button type="button" class="btn btn-secondary btn-lg" onclick="startCounter();">START</button>
+                    <button type="button" class="btn btn-secondary btn-lg" onclick="stopCounter();">RESET</button>
+                </div>
             </div>
-        </div>
 
-        <script>
-            </script>
-    </body>
+
+        </div>
+    </center>
+</body>
+<script>
+
+    var counting = false;
+    var timer;
+    function startCounter()
+    {
+        if ( counting )
+            return
+        else 
+            counting = true;
+            
+        var seconds = 0;
+        var minutes = 25;
+        var time = document.getElementById('time');
+
+        function decrement() 
+        {
+            seconds--;
+            if (seconds == -1) 
+            {
+                minutes--;
+                seconds = 59;
+            }
+            time.innerText = minutes + ":" + seconds;
+        }
+        timer = setInterval(decrement, 1000);
+    }
+
+    function stopCounter()
+    {
+        clearInterval( timer );
+        counting = false;
+    }
+
+</script>
+
 </html>
