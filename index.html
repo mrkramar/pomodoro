@@ -14,44 +14,67 @@
 
 <body>
     <center>
-        <div class="align-center">
-            <h2>Pomodoro Timer</h2>
+
+            <img width="80px;" src="https://image.flaticon.com/icons/png/512/135/135702.png">
             <h1 id="time">25:00</h1>
             <div class="row">
                 <div class="col-md">
-                    <button type="button" class="btn btn-secondary btn-lg" onclick="startCounter();">START</button>
-                    <button type="button" class="btn btn-secondary btn-lg" onclick="stopCounter();">RESET</button>
+                    <button type="button" class="btn btn-one" onclick="startCounter();">START</button>
+                    <button type="button" class="btn btn-one" onclick="stopCounter();">PAUSE</button>
+                    <button type="button" class="btn btn-one" onclick="resetCounter();">RESET</button>
                 </div>
             </div>
 
 
-        </div>
+
     </center>
 </body>
 <script>
-
+    var time = document.getElementById('time');
+    var seconds = 0;
+    var minutes = 25;
     var counting = false;
     var timer;
+
+    function updateTime()
+    {
+        var minutesStr, secondsStr;
+        if ( minutes < 10 )
+            minutesStr = '0' + minutes;
+        else
+            minutesStr = minutes;
+
+        if ( seconds < 10 )
+            secondsStr = '0' + seconds;
+        else
+            secondsStr = seconds;
+        
+        time.innerText = minutesStr + ":" + secondsStr;
+    }
+
     function startCounter()
     {
         if ( counting )
             return
         else 
             counting = true;
-            
-        var seconds = 0;
-        var minutes = 25;
-        var time = document.getElementById('time');
-
+        
         function decrement() 
         {
             seconds--;
+
+            if (seconds == -1 && minutes == 0)
+            {
+                stopCounter();
+                return;
+            }
+
             if (seconds == -1) 
             {
                 minutes--;
                 seconds = 59;
             }
-            time.innerText = minutes + ":" + seconds;
+            updateTime();
         }
         timer = setInterval(decrement, 1000);
     }
@@ -60,6 +83,15 @@
     {
         clearInterval( timer );
         counting = false;
+    }
+
+    function resetCounter()
+    {
+        if ( counting )
+            stopCounter();
+        seconds = 0;
+        minutes = 25;
+        updateTime();
     }
 
 </script>

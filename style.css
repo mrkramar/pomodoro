@@ -1,23 +1,85 @@
 
 @import url('https://fonts.googleapis.com/css?family=Oswald');
-
-* {
-    margin-top:50px;
-    background-color: #d64541;
-    margin-left:0;
-    margin-right:0;
-    margin-bottom:0;
+html {
+    background-color:rgba(236, 240, 241, 1);
+    margin-top: 100px;
+    overflow: hidden;
 
 }
 
 
 h1 {
     font-family: 'Oswald', sans-serif;
-    color: white;
+    color: #d64541;
+
 }
 
 
 h2 {
     font-family: 'Oswald', sans-serif;
-    color : white;
+    text-transform: uppercase;
+    color: #d64541;
+}
+
+.btn{
+    font-family: 'Oswald', sans-serif;
+
+    margin-right: 20px;
+    margin-left: 20px;
+
+
+    line-height: 50px;
+	height: 50px;
+	text-align: center;
+	width: 100px;
+	cursor: pointer;
+}
+
+.btn-one {
+	color: #FFF;
+	transition: all 0.3s;
+	position: relative;
+}
+.btn-one span {
+	transition: all 0.3s;
+}
+.btn-one::before {
+	content: '';
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+	opacity: 0;
+	transition: all 0.3s;
+	border-top-width: 1px;
+	border-bottom-width: 1px;
+	border-top-style: solid;
+	border-bottom-style: solid;
+	border-top-color: rgba(255,255,255,0.5);
+	border-bottom-color: rgba(255,255,255,0.5);
+	transform: scale(0.1, 1);
+}
+.btn-one:hover span {
+	letter-spacing: 2px;
+}
+.btn-one:hover::before {
+	opacity: 1;	
+	transform: scale(1, 1);	
+}
+.btn-one::after {
+	content: '';
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+	transition: all 0.3s;
+	background-color: rgba(255,255,255,0.1);
+}
+.btn-one:hover::after {
+	opacity: 0;	
+	transform: scale(0.1, 1);
 }
