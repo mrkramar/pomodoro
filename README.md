@@ -1,2 +1,2 @@
 # pomodoro
-My Pomodoro timer
+My Pomodoro timer - just trying out javascript syntax
