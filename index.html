@@ -36,41 +36,29 @@
     var counting = false;
     var timer;
 
-    function updateTime()
-    {
+    function updateTime() {
         var minutesStr, secondsStr;
-        if ( minutes < 10 )
-            minutesStr = '0' + minutes;
-        else
-            minutesStr = minutes;
+        
+        if (minutes < 10) minutesStr = '0' + minutes;
+        else minutesStr = minutes;
 
-        if ( seconds < 10 )
-            secondsStr = '0' + seconds;
-        else
-            secondsStr = seconds;
+        if (seconds < 10) secondsStr = '0' + seconds;
+        else secondsStr = seconds;
         
         time.innerText = minutesStr + ":" + secondsStr;
     }
 
-    function startCounter()
-    {
-        if ( counting )
-            return
-        else 
-            counting = true;
+    function startCounter() {
+        if(counting) return
+        else counting = true;
         
-        function decrement() 
-        {
+        function decrement() {
             seconds--;
-
-            if (seconds == -1 && minutes == 0)
-            {
+            if (seconds == -1 && minutes == 0) {
                 stopCounter();
                 return;
             }
-
-            if (seconds == -1) 
-            {
+            if (seconds == -1) {
                 minutes--;
                 seconds = 59;
             }
@@ -79,16 +67,13 @@
         timer = setInterval(decrement, 1000);
     }
 
-    function stopCounter()
-    {
+    function stopCounter() {
         clearInterval( timer );
         counting = false;
     }
 
-    function resetCounter()
-    {
-        if ( counting )
-            stopCounter();
+    function resetCounter() {
+        if (counting) stopCounter();
         seconds = 0;
         minutes = 25;
         updateTime();

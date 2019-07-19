@@ -1,2 +1,3 @@
-# pomodoro
-My Pomodoro timer - just trying out javascript syntax
+# Pomodoro timer
+
+mini project in JavaScript
